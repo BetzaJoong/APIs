@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    width: 50%;
+    height: 100%;
+    background-color: rgb(229, 183, 232);
+    margin: 300px;
+    margin-top: 20px;
+}
+
+h1 {
+    margin-left: 100px;
+}
+
+.convertir {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    margin-left: 240px;
+    width: 30%;
+    border-radius: 14px;
+    height: 2em;
+    border: solid rgb(176, 134, 212);
+    font-family: 'Concert One', cursive;
+}
+
+.label1 {
+    font-family: 'Concert One', cursive;
+    height: 1.2em;
+    margin-left: 290px;
+}
+
+.label2 {
+    font-family: 'Concert One', cursive;
+    height: 1.2em;
+    margin-left: 30px;
+}
+
+select {
+    border-radius: 14px;
+    height: 2em;
+    border: solid rgb(176, 134, 212);
+    font-family: 'Concert One', cursive;
+    margin-left: 40px;
+}
+
+.result{
+    margin-top: 1em;
+    height: 3em;
+    margin-left: 230px;
+}
+
+button {
+    display: inline-block;
+    margin-right: .6px;
+    background-color: rgb(230, 205, 219);
+    color: rgb(42, 41, 41);
+    border: solid rgb(99, 50, 142);
+    width: 150px;
+    margin-top: 2em;
+    border-radius: 10px;
+    margin-left: 100px;
+    font-family: 'Just Another Hand', cursive;
+}
+
+.total {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#chartContainer {
+    width: 70px;
+    height: 60px;
+}
+
+#lineChart {
+    background-color: #f1f1f1; 
+} 
