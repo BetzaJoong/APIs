@@ -57,8 +57,6 @@ async function convertirMoneda() {
             endpoint = 'https://mindicador.cl/api/euro';
             simboloMoneda = '€';
             break;
-        default:
-            alert('Moneda no válida. Selecciona USD o EUR.');
             return;
     }
 
@@ -107,7 +105,7 @@ document.getElementById('reiniciar').addEventListener('click', function () {
     lineChart.update();
 });
 
-// Código para la gráfica
+// __Código para la gráfica__
 const canvas = document.getElementById('lineChart');
 const ctx = canvas.getContext('2d');
 const data = {
@@ -133,3 +131,4 @@ const lineChart = new Chart(ctx, {
         },
     },
 });
+
