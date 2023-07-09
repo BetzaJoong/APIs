@@ -14,9 +14,9 @@ async function obtenerHistorialMoneda(endpoint) {
 }
 
 // Obtiene el tipo de cambio actual del dólar en pesos chilenos
-async function obtenerTipoCambioDolar() {
+async function obtenerTipoCambioActual() {
     try {
-        const response = await fetch('https://mindicador.cl/api/dolar');
+        const response = await fetch('https://mindicador.cl/api/dolar/2022');
         const data = await response.json();
         console.log(data);
         return data.serie[0].valor;
@@ -50,28 +50,40 @@ async function convertirMoneda() {
     let simboloMoneda;
     switch (moneda) {
         case 'usd':
-            endpoint = 'https://mindicador.cl/api/dolar';
+            endpoint = 'https://mindicador.cl/api/dolar/2022';
             simboloMoneda = '$';
             break;
         case 'eur':
-            endpoint = 'https://mindicador.cl/api/euro';
+            endpoint = 'https://mindicador.cl/api/euro/2022';
             simboloMoneda = '€';
             break;
+        default:
             return;
     }
 
     try {
         const historialMoneda = await obtenerHistorialMoneda(endpoint);
 
-        // Obtiene los últimos 10 días del historial
-        const ultimos10Dias = historialMoneda.serie.slice(-10);
+        // Filtra los datos para el eje Y (valores entre 905 y 950)
+        const datosEjeY = historialMoneda.serie.filter((dia) => dia.valor >= 905 && dia.valor <= 950);
 
         // Construye los datos para la gráfica
-        const labels = ultimos10Dias.map((dia) => dia.fecha);
-        const data = ultimos10Dias.map((dia) => dia.valor);
+        const labels = [
+            '2022-2-4',
+            '2022-2-7',
+            '2022-2-8',
+            '2022-2-9',
+            '2022-2-10',
+            '2022-2-11',
+            '2022-2-14',
+            '2022-2-15',
+            '2022-2-16',
+            '2022-2-17'
+        ];
+        const data = datosEjeY.map((dia) => dia.valor);
 
         // Obtiene el tipo de cambio actual del dólar en pesos chilenos
-        const tipoCambioDolar = await obtenerTipoCambioDolar();
+        const tipoCambioDolar = await obtenerTipoCambioActual();
 
         // Realiza la conversión de pesos chilenos a dólares
         const resultado = cantidad / tipoCambioDolar;
@@ -131,4 +143,5 @@ const lineChart = new Chart(ctx, {
         },
     },
 });
+
 
