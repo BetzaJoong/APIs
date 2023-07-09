@@ -138,7 +138,7 @@ const lineChart = new Chart(ctx, {
     options: {
         scales: {
             y: {
-                beginAtZero: false, // Inicia el eje Y en el valor mínimo de los datos
+                beginAtZero: false,
             },
         },
     },
